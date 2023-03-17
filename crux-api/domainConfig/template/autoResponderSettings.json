@@ -1,0 +1,104 @@
+{
+  "responder_ack_seconds_min": 30,
+  "responder_ack_seconds_max": 600,
+  "responder_resolve_seconds_min": 90,
+  "responder_resolve_seconds_max": 5000,
+  "responder_active_time_begin": null,
+  "responder_active_time_end": null,
+  "responder_active_days_of_week": null,
+  "responder_response_seconds_min": 30,
+  "responder_response_seconds_max": 600,
+  "responder_response_join_pct": 70,
+  "services": [
+    {
+      "pd_id": "tech_service_1a_id",
+      "responder_ack_seconds_min": null,
+      "responder_ack_seconds_max": null,
+      "responder_resolve_seconds_min": null,
+      "responder_resolve_seconds_max": null,
+      "responder_response_seconds_min": null,
+      "responder_response_seconds_max": null,
+      "responder_response_join_pct": null
+    },
+    {
+      "pd_id": "tech_service_1b_id",
+      "responder_ack_seconds_min": null,
+      "responder_ack_seconds_max": null,
+      "responder_resolve_seconds_min": null,
+      "responder_resolve_seconds_max": null,
+      "responder_response_seconds_min": null,
+      "responder_response_seconds_max": null,
+      "responder_response_join_pct": null
+    },
+    {
+      "pd_id": "tech_service_1c_id",
+      "responder_ack_seconds_min": null,
+      "responder_ack_seconds_max": null,
+      "responder_resolve_seconds_min": null,
+      "responder_resolve_seconds_max": null,
+      "responder_response_seconds_min": null,
+      "responder_response_seconds_max": null,
+      "responder_response_join_pct": null
+    },
+    {
+      "pd_id": "tech_service_2a_id",
+      "responder_ack_seconds_min": null,
+      "responder_ack_seconds_max": null,
+      "responder_resolve_seconds_min": null,
+      "responder_resolve_seconds_max": null,
+      "responder_response_seconds_min": null,
+      "responder_response_seconds_max": null,
+      "responder_response_join_pct": null
+    },
+    {
+      "pd_id": "tech_service_2b_id",
+      "responder_ack_seconds_min": null,
+      "responder_ack_seconds_max": null,
+      "responder_resolve_seconds_min": null,
+      "responder_resolve_seconds_max": null,
+      "responder_response_seconds_min": null,
+      "responder_response_seconds_max": null,
+      "responder_response_join_pct": null
+    },
+    {
+      "pd_id": "tech_service_3_id",
+      "responder_ack_seconds_min": null,
+      "responder_ack_seconds_max": null,
+      "responder_resolve_seconds_min": null,
+      "responder_resolve_seconds_max": null,
+      "responder_response_seconds_min": null,
+      "responder_response_seconds_max": null,
+      "responder_response_join_pct": null
+    },
+    {
+      "pd_id": "tech_service_4_id",
+      "responder_ack_seconds_min": null,
+      "responder_ack_seconds_max": null,
+      "responder_resolve_seconds_min": null,
+      "responder_resolve_seconds_max": null,
+      "responder_response_seconds_min": null,
+      "responder_response_seconds_max": null,
+      "responder_response_join_pct": null
+    },
+    {
+      "pd_id": "tech_service_5_id",
+      "responder_ack_seconds_min": null,
+      "responder_ack_seconds_max": null,
+      "responder_resolve_seconds_min": null,
+      "responder_resolve_seconds_max": null,
+      "responder_response_seconds_min": null,
+      "responder_response_seconds_max": null,
+      "responder_response_join_pct": null
+    }
+  ],
+  "subscribed_service_ids": [
+    "tech_service_1a_id",
+    "tech_service_1b_id",
+    "tech_service_1c_id",
+    "tech_service_2a_id",
+    "tech_service_2b_id",
+    "tech_service_3_id",
+    "tech_service_4_id",
+    "tech_service_5_id"
+  ]
+}

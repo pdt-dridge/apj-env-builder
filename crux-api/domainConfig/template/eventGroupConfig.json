@@ -1,0 +1,97 @@
+[
+  {
+    "event_group": {
+      "name": "Event Group for domain_name",
+      "event_group_items": [
+        {
+          "payload": "{\r\n  \"payload\": {\r\n    \"summary\": \"Latency alert on solr{{int(1,9)}}.app.demo\",\r\n    \"source\": \"prometheus:cluster/api-stats-prod-003\",\r\n    \"severity\": \"error\",\r\n    \"component\": \"postgres\",\r\n    \"group\": \"prod-datapipe\",\r\n    \"class\": \"failure\",\r\n    \"custom_details\": {\r\n      \"ping time\": \"1500ms\",\r\n      \"load avg\": \"0.75\"\r\n    }\r\n  },\r\n  \"images\": [\r\n    {\r\n      \"src\": \"https://softwaremill.com/images/uploads/2017/05/dd-status-count.2b9eb94e.png\",\r\n      \"href\": \"https://organisation.com/\"\r\n    }\r\n  ],\r\n  \"links\": [\r\n    {\r\n      \"href\": \"Runbook\",\r\n      \"text\": \"https://response.pagerduty.com\"\r\n    }\r\n  ],\r\n  \"client\": \"prometheus\",\r\n  \"client_url\": \"https://monitoring.organisation.com\"\r\n}",
+          "routing_key": "tech_service_1a_key",
+          "dedup_key": "",
+          "event_action": "trigger",
+          "delay_seconds": 45,
+          "times": 5,
+          "interval_seconds": 3,
+          "event_group_id": 891,
+          "event_type": null
+        },
+        {
+          "payload": "{\r\n  \"payload\": {\r\n    \"summary\": \"Unexpected Error on initialisation\",\r\n    \"source\": \"datadog:cluster/api-stats-prod-003\",\r\n    \"severity\": \"critical\",\r\n    \"component\": \"nexus\",\r\n    \"group\": \"prod-datapipe\",\r\n    \"class\": \"failure\",\r\n    \"custom_details\": {\r\n      \"request\": \"POST /upload/ HTTP/1.1\",\r\n      \"referrer\": \"referrer: \\\"http://www.pagerduty.demo/upload/\",\r\n      \"load avg\": \"0.75\"\r\n    }\r\n  },\r\n  \"links\": [\r\n    {\r\n      \"href\": \"https://organisation.com/\",\r\n      \"text\": \"View in Datadog\"\r\n    }\r\n  ],\r\n  \"client\": \"127.0.0.1\",\r\n  \"client_url\": \"www.pagerduty.demo\"\r\n}",
+          "routing_key": "tech_service_1b_key",
+          "dedup_key": "",
+          "event_action": "trigger",
+          "delay_seconds": 0,
+          "times": 3,
+          "interval_seconds": 1,
+          "event_group_id": 891,
+          "event_type": null
+        },
+        {
+          "payload": "{\r\n  \"payload\": {\r\n    \"summary\": \"User login failed\",\r\n    \"source\": \"datadog:cluster/api-stats-prod-005\",\r\n    \"severity\": \"info\",\r\n    \"component\": \"nexus\",\r\n    \"group\": \"prod-login\",\r\n    \"class\": \"failure\",\r\n    \"custom_details\": {\r\n      \"request\": \"POST /upload/ HTTP/1.1\",\r\n      \"referrer\": \"referrer: \\\"http://www.pagerduty.demo/upload/\",\r\n      \"load avg\": \"0.75\"\r\n    }\r\n  },\r\n  \"links\": [\r\n    {\r\n      \"href\": \"https://organisation.com/\",\r\n      \"text\": \"View in Datadog\"\r\n    }\r\n  ],\r\n  \"client\": \"127.0.0.1\",\r\n  \"client_url\": \"www.pagerduty.demo\"\r\n}",
+          "routing_key": "tech_service_1c_key",
+          "dedup_key": "",
+          "event_action": "trigger",
+          "delay_seconds": 0,
+          "times": 3,
+          "interval_seconds": 1,
+          "event_group_id": 891,
+          "event_type": null
+        },
+        {
+          "payload": "{\r\n  \"payload\": {\r\n    \"summary\": \"Latency trending upwards on Solr instances\",\r\n    \"source\": \"prometheus:cluster/api-stats-prod-003\",\r\n    \"severity\": \"warning\",\r\n    \"component\": \"postgres\",\r\n    \"group\": \"prod-datapipe\",\r\n    \"class\": \"trend warning\",\r\n    \"custom_details\": {\r\n      \"ping time\": \"1500ms\",\r\n      \"load avg\": \"0.75\"\r\n    }\r\n  },\r\n  \"images\": [\r\n    {\r\n      \"src\": \"https://softwaremill.com/images/uploads/2017/05/dd-status-count.2b9eb94e.png\",\r\n      \"href\": \"https://organisation.com/\"\r\n    }\r\n  ],\r\n  \"links\": [\r\n    {\r\n      \"href\": \"Runbook\",\r\n      \"text\": \"https://response.pagerduty.com\"\r\n    }\r\n  ],\r\n  \"client\": \"prometheus\",\r\n  \"client_url\": \"https://monitoring.organisation.com\"\r\n}",
+          "routing_key": "tech_service_2a_key",
+          "dedup_key": "",
+          "event_action": "trigger",
+          "delay_seconds": 0,
+          "times": 1,
+          "interval_seconds": 1,
+          "event_group_id": 891,
+          "event_type": null
+        },
+        {
+          "payload": "{\r\n  \"payload\": {\r\n    \"summary\": \"Client intended to send too large body:{{int(13106010,13109999)}}bytes\",\r\n    \"source\": \"datadog:cluster/api-stats-prod-003\",\r\n    \"severity\": \"critical\",\r\n    \"component\": \"NGINX\",\r\n    \"group\": \"prod-datapipe\",\r\n    \"class\": \"failure\",\r\n    \"custom_details\": {\r\n      \"request\": \"POST /upload/ HTTP/1.1\",\r\n      \"referrer\": \"referrer: \\\"http://www.pagerduty.demo/upload/\",\r\n      \"load avg\": \"0.75\"\r\n    }\r\n  },\r\n  \"images\": [\r\n    {\r\n      \"src\": \"https://softwaremill.com/images/uploads/2017/05/dd-status-count.2b9eb94e.png\",\r\n      \"href\": \"https://organisation.com/\"\r\n    }\r\n  ],\r\n  \"links\": [\r\n    {\r\n      \"href\": \"https://organisation.com/\",\r\n      \"text\": \"View in Datadog\"\r\n    }\r\n  ],\r\n  \"client\": \"127.0.0.1\",\r\n  \"client_url\": \"www.pagerduty.demo\"\r\n}",
+          "routing_key": "tech_service_2b_key",
+          "dedup_key": "",
+          "event_action": "trigger",
+          "delay_seconds": 30,
+          "times": 4,
+          "interval_seconds": 1,
+          "event_group_id": 891,
+          "event_type": null
+        },
+        {
+          "payload": "{\r\n  \"payload\": {\r\n    \"summary\": \"Latency trending upwards on Solr instances\",\r\n    \"source\": \"prometheus:cluster/api-stats-prod-003\",\r\n    \"severity\": \"warning\",\r\n    \"component\": \"postgres\",\r\n    \"group\": \"prod-datapipe\",\r\n    \"class\": \"trend warning\",\r\n    \"custom_details\": {\r\n      \"ping time\": \"1500ms\",\r\n      \"load avg\": \"0.75\"\r\n    }\r\n  },\r\n  \"images\": [\r\n    {\r\n      \"src\": \"https://softwaremill.com/images/uploads/2017/05/dd-status-count.2b9eb94e.png\",\r\n      \"href\": \"https://organisation.com/\"\r\n    }\r\n  ],\r\n  \"links\": [\r\n    {\r\n      \"href\": \"Runbook\",\r\n      \"text\": \"https://response.pagerduty.com\"\r\n    }\r\n  ],\r\n  \"client\": \"prometheus\",\r\n  \"client_url\": \"https://monitoring.organisation.com\"\r\n}",
+          "routing_key": "tech_service_3_key",
+          "dedup_key": "",
+          "event_action": "trigger",
+          "delay_seconds": 0,
+          "times": 1,
+          "interval_seconds": 1,
+          "event_group_id": 891,
+          "event_type": null
+        },        
+        {
+          "payload": "{\r\n  \"payload\": {\r\n    \"summary\": \"Latency trending upwards on Solr instances\",\r\n    \"source\": \"prometheus:cluster/api-stats-prod-003\",\r\n    \"severity\": \"warning\",\r\n    \"component\": \"postgres\",\r\n    \"group\": \"prod-datapipe\",\r\n    \"class\": \"trend warning\",\r\n    \"custom_details\": {\r\n      \"ping time\": \"1500ms\",\r\n      \"load avg\": \"0.75\"\r\n    }\r\n  },\r\n  \"images\": [\r\n    {\r\n      \"src\": \"https://softwaremill.com/images/uploads/2017/05/dd-status-count.2b9eb94e.png\",\r\n      \"href\": \"https://organisation.com/\"\r\n    }\r\n  ],\r\n  \"links\": [\r\n    {\r\n      \"href\": \"Runbook\",\r\n      \"text\": \"https://response.pagerduty.com\"\r\n    }\r\n  ],\r\n  \"client\": \"prometheus\",\r\n  \"client_url\": \"https://monitoring.organisation.com\"\r\n}",
+          "routing_key": "tech_service_4_key",
+          "dedup_key": "",
+          "event_action": "trigger",
+          "delay_seconds": 0,
+          "times": 1,
+          "interval_seconds": 1,
+          "event_group_id": 891,
+          "event_type": null
+        },        
+        {
+          "payload": "{\r\n  \"payload\": {\r\n    \"summary\": \"Latency trending upwards on Solr instances\",\r\n    \"source\": \"prometheus:cluster/api-stats-prod-003\",\r\n    \"severity\": \"warning\",\r\n    \"component\": \"postgres\",\r\n    \"group\": \"prod-datapipe\",\r\n    \"class\": \"trend warning\",\r\n    \"custom_details\": {\r\n      \"ping time\": \"1500ms\",\r\n      \"load avg\": \"0.75\"\r\n    }\r\n  },\r\n  \"images\": [\r\n    {\r\n      \"src\": \"https://softwaremill.com/images/uploads/2017/05/dd-status-count.2b9eb94e.png\",\r\n      \"href\": \"https://organisation.com/\"\r\n    }\r\n  ],\r\n  \"links\": [\r\n    {\r\n      \"href\": \"Runbook\",\r\n      \"text\": \"https://response.pagerduty.com\"\r\n    }\r\n  ],\r\n  \"client\": \"prometheus\",\r\n  \"client_url\": \"https://monitoring.organisation.com\"\r\n}",
+          "routing_key": "tech_service_5_key",
+          "dedup_key": "",
+          "event_action": "trigger",
+          "delay_seconds": 0,
+          "times": 1,
+          "interval_seconds": 1,
+          "event_group_id": 891,
+          "event_type": null
+        }
+      ]
+    }
+  }
+]
