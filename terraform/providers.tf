@@ -7,13 +7,13 @@ provider "pagerduty" {
 }
 
 
-/* 
-  Add PagerDuty Subdomain to CRUX
-*/
-resource "null_resource" "crux-domain" {
+# /* 
+#   Add PagerDuty Subdomain to CRUX
+# */
+# resource "null_resource" "crux-domain" {
 	
-  provisioner "local-exec" {
-    command = "/bin/bash ../crux-api/crux-init.sh ${var.CRUX_TOKEN} ${var.PAGERDUTY_DOMAIN} ${var.PAGERDUTY_TOKEN}"
-  }
+#   provisioner "local-exec" {
+#     command = "/bin/bash ../crux-api/crux-init.sh ${var.CRUX_TOKEN} ${var.PAGERDUTY_DOMAIN} ${var.PAGERDUTY_TOKEN}"
+#   }
   
-}
+# }

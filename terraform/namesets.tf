@@ -105,41 +105,41 @@ variable "namesets" {
 
 /* 
   Update local variable for given nameset to be applied
-  e.g. terraform apply ... -var="CRUX_NAMESET=ecommerce" wil apply eCommerce nameset to environment
+  e.g. terraform apply ... -var="NAMESET=ecommerce" wil apply eCommerce nameset to environment
 */
 locals {
   nameset = {
     BS_1  = {
-      name        = lookup(var.namesets, var.CRUX_NAMESET).BS_1.name
-      description = lookup(var.namesets, var.CRUX_NAMESET).BS_1.description
+      name        = lookup(var.namesets, var.NAMESET).BS_1.name
+      description = lookup(var.namesets, var.NAMESET).BS_1.description
     }
     BS_2  = {
-      name        = lookup(var.namesets, var.CRUX_NAMESET).BS_2.name
-      description = lookup(var.namesets, var.CRUX_NAMESET).BS_2.description
+      name        = lookup(var.namesets, var.NAMESET).BS_2.name
+      description = lookup(var.namesets, var.NAMESET).BS_2.description
     }
     BS_2  = {
-      name        = lookup(var.namesets, var.CRUX_NAMESET).BS_2.name
-      description = lookup(var.namesets, var.CRUX_NAMESET).BS_2.description
+      name        = lookup(var.namesets, var.NAMESET).BS_2.name
+      description = lookup(var.namesets, var.NAMESET).BS_2.description
     }
     BS_3  = {
-      name        = lookup(var.namesets, var.CRUX_NAMESET).BS_3.name
-      description = lookup(var.namesets, var.CRUX_NAMESET).BS_3.description
+      name        = lookup(var.namesets, var.NAMESET).BS_3.name
+      description = lookup(var.namesets, var.NAMESET).BS_3.description
     }
     BS_4  = {
-      name        = lookup(var.namesets, var.CRUX_NAMESET).BS_4.name
-      description = lookup(var.namesets, var.CRUX_NAMESET).BS_4.description
+      name        = lookup(var.namesets, var.NAMESET).BS_4.name
+      description = lookup(var.namesets, var.NAMESET).BS_4.description
     }
     BS_5  = {
-      name        = lookup(var.namesets, var.CRUX_NAMESET).BS_5.name
-      description = lookup(var.namesets, var.CRUX_NAMESET).BS_5.description
+      name        = lookup(var.namesets, var.NAMESET).BS_5.name
+      description = lookup(var.namesets, var.NAMESET).BS_5.description
     }
-    TS_1A         = lookup(var.namesets, var.CRUX_NAMESET).TS_1A
-    TS_1B         = lookup(var.namesets, var.CRUX_NAMESET).TS_1B
-    TS_1C         = lookup(var.namesets, var.CRUX_NAMESET).TS_1C
-    TS_2A         = lookup(var.namesets, var.CRUX_NAMESET).TS_2A
-    TS_2B         = lookup(var.namesets, var.CRUX_NAMESET).TS_2B
-    TS_3          = lookup(var.namesets, var.CRUX_NAMESET).TS_3
-    TS_4          = lookup(var.namesets, var.CRUX_NAMESET).TS_4
-    TS_5          = lookup(var.namesets, var.CRUX_NAMESET).TS_5
+    TS_1A         = lookup(var.namesets, var.NAMESET).TS_1A
+    TS_1B         = lookup(var.namesets, var.NAMESET).TS_1B
+    TS_1C         = lookup(var.namesets, var.NAMESET).TS_1C
+    TS_2A         = lookup(var.namesets, var.NAMESET).TS_2A
+    TS_2B         = lookup(var.namesets, var.NAMESET).TS_2B
+    TS_3          = lookup(var.namesets, var.NAMESET).TS_3
+    TS_4          = lookup(var.namesets, var.NAMESET).TS_4
+    TS_5          = lookup(var.namesets, var.NAMESET).TS_5
   }
 }

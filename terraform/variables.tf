@@ -19,45 +19,17 @@ variable "PAGERDUTY_TOKEN" {
 }
 
 /*
-  PagerDuty Subdomain
+  CRUX Bearer Token
 */
-variable "PAGERDUTY_DOMAIN" {
+variable "CRUX_TOKEN" {
   type    = string
+  default = "placeholder"
 }
 
 /*
   CRUX Bearer Token
 */
-variable "CRUX_TOKEN" {
+variable "NAMESET" {
   type    = string
-}
-
-/*
-  CRUX Nameset Input - see namesets.tf for implementation
-  
-  Example usage (eCommerce Nameset): 
-  $ terraform apply ... -var="CRUX_NAMESET=ecommerce"
-*/
-
-variable "CRUX_NAMESET" {
-  type    = string
-  default = "generic"
-}
-
-/*
-  POST Webhook URLs (example can be generated from https://webhook.site/)
-*/
-variable "webhook_restart" {
-  type    = string
-  default = "https://generic_webhook_url/XXXXXX/BBBBBB"
-}
-
-variable "webhook_rollback" {
-  type    = string
-  default = "https://generic_webhook_url/XXXXXX/BBBBBB"
-}
-
-variable "webhook_collect_diagnostics" {
-  type    = string
-  default = "https://generic_webhook_url/XXXXXX/BBBBBB"
+  default = "ecommerce"
 }
