@@ -21,10 +21,10 @@ variable "PAGERDUTY_TOKEN" {
 /*
   CRUX Bearer Token
 */
-variable "CRUX_TOKEN" {
-  type    = string
-  default = "placeholder"
-}
+# variable "CRUX_TOKEN" {
+#   type    = string
+#   default = "placeholder"
+# }
 
 /*
   CRUX Bearer Token

@@ -41,6 +41,7 @@ resource "pagerduty_business_service" "business_service_5" {
 resource "pagerduty_service" "tech_service_1a" {
   name                    = local.nameset.TS_1A
   auto_resolve_timeout    = 14400
+  acknowledgement_timeout = null
   escalation_policy       = [for ep in pagerduty_escalation_policy.team_escalation_policies: ep.id if ep.name == "Application Support (EP)"][0]
   alert_creation          = "create_alerts_and_incidents"
   alert_grouping_parameters {
@@ -55,6 +56,7 @@ resource "pagerduty_service" "tech_service_1a" {
 resource "pagerduty_service" "tech_service_1b" {
   name                    = local.nameset.TS_1B
   auto_resolve_timeout    = 14400
+  acknowledgement_timeout = null
   escalation_policy       = [for ep in pagerduty_escalation_policy.team_escalation_policies: ep.id if ep.name == "Database (EP)"][0]
   alert_creation          = "create_alerts_and_incidents"
   alert_grouping_parameters {
@@ -73,6 +75,7 @@ resource "pagerduty_service" "tech_service_1b" {
 resource "pagerduty_service" "tech_service_1c" {
   name                    = local.nameset.TS_1C
   auto_resolve_timeout    = 14400
+  acknowledgement_timeout = null
   escalation_policy       = [for ep in pagerduty_escalation_policy.team_escalation_policies: ep.id if ep.name == "Infrastructure (EP)"][0]
   alert_creation          = "create_alerts_and_incidents"
   incident_urgency_rule {
@@ -84,6 +87,7 @@ resource "pagerduty_service" "tech_service_1c" {
 resource "pagerduty_service" "tech_service_2a" {
   name                    = local.nameset.TS_2A
   auto_resolve_timeout    = 14400
+  acknowledgement_timeout = null
   escalation_policy       = [for ep in pagerduty_escalation_policy.team_escalation_policies: ep.id if ep.name == "Database (EP)"][0]
   alert_creation          = "create_alerts_and_incidents"
   incident_urgency_rule {
@@ -95,6 +99,7 @@ resource "pagerduty_service" "tech_service_2a" {
 resource "pagerduty_service" "tech_service_2b" {
   name                    = local.nameset.TS_2B
   auto_resolve_timeout    = 14400
+  acknowledgement_timeout = null
   escalation_policy       = [for ep in pagerduty_escalation_policy.team_escalation_policies: ep.id if ep.name == "Networking (EP)"][0]
   alert_creation          = "create_alerts_and_incidents"
   incident_urgency_rule {
@@ -106,6 +111,7 @@ resource "pagerduty_service" "tech_service_2b" {
 resource "pagerduty_service" "tech_service_3" {
   name                    = local.nameset.TS_3
   auto_resolve_timeout    = 14400
+  acknowledgement_timeout = null
   escalation_policy       = [for ep in pagerduty_escalation_policy.team_escalation_policies: ep.id if ep.name == "Application Support (EP)"][0]
   alert_creation          = "create_alerts_and_incidents"
   incident_urgency_rule {
@@ -117,6 +123,7 @@ resource "pagerduty_service" "tech_service_3" {
 resource "pagerduty_service" "tech_service_4" {
   name                    = local.nameset.TS_4
   auto_resolve_timeout    = 14400
+  acknowledgement_timeout = null
   escalation_policy       = [for ep in pagerduty_escalation_policy.team_escalation_policies: ep.id if ep.name == "Infrastructure (EP)"][0]
   alert_creation          = "create_alerts_and_incidents"
   incident_urgency_rule {
@@ -128,6 +135,7 @@ resource "pagerduty_service" "tech_service_4" {
 resource "pagerduty_service" "tech_service_5" {
   name                    = local.nameset.TS_5
   auto_resolve_timeout    = 14400
+  acknowledgement_timeout = null
   escalation_policy       = [for ep in pagerduty_escalation_policy.team_escalation_policies: ep.id if ep.name == "Security (EP)"][0]
   alert_creation          = "create_alerts_and_incidents"
   incident_urgency_rule {

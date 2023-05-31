@@ -40,33 +40,33 @@ variable "namesets" {
     # eCommerce
     ecommerce = {
       BS_1 = {
-        name        = "eCommerce Platform"
-        description = "eCommerce Platform supplying digital channels"
+        name        = "Mobile App - Retail"
+        description = "Completed Transactions ivia mobile channels"
       }
       BS_2 = {
-        name        = "Business Service 2"
-        description = "Business Service 2: Description"
+        name        = "Self Service Potal"
+        description = "Customer Self Service login and account management"
       }
       BS_3 = {
-        name        = "Business Service 3"
-        description = "Business Service 3: Description"
+        name        = "My Account"
+        description = "Customer Self Service login and account management"
       }
       BS_4 = {
-        name        = "Business Service 4"
-        description = "Business Service 4: Description"
+        name        = "New Customer Sign Up"
+        description = "NewBusiness Workflow"
       }
       BS_5 = {
-        name        = "Business Service 5"
-        description = "Business Service 5: Description"
+        name        = "Customer Search"
+        description = "Internal Customer Lookup"
       }
-      TS_1A         = "Website"
-      TS_1B         = "Database"
-      TS_1C         = "Technical Service 1C"
-      TS_2A         = "Technical Service 2A"
-      TS_2B         = "Technical Service 2B"
-      TS_3          = "Technical Service 3"
-      TS_4          = "Technical Service 4"
-      TS_5          = "Technical Service 5"    
+      TS_1A         = "Website Synthetics"
+      TS_1B         = "Transaction Database"
+      TS_1C         = "Customer Search"
+      TS_2A         = "Product Catalog"
+      TS_2B         = "NGINX"
+      TS_3          = "Azure VMs"
+      TS_4          = "AWS RDS"
+      TS_5          = "Azure AD"    
     }
 
     # Retail Banking

@@ -1,0 +1,389 @@
+/* 
+  PagerDuty Services, Integrations, Dependencies, and Maintenance Windows
+  - https://www.terraform.io/docs/providers/pagerduty/r/business_service.html
+  - https://www.terraform.io/docs/providers/pagerduty/r/service.html
+  - https://www.terraform.io/docs/providers/pagerduty/r/service_dependency.html
+  - https://www.terraform.io/docs/providers/pagerduty/r/service_integration.html
+  - https://www.terraform.io/docs/providers/pagerduty/r/maintenance_window.html
+*/
+
+
+data "pagerduty_user" "repName" {
+  email = "rep-email"
+}
+
+
+/* 
+  Team for the Reps' Services
+*/
+resource "pagerduty_team" "repName_team" {
+  name        = "[repName] Engineering"
+  description = "repName Engineering Team"
+}
+
+/* 
+  Escalation Policy for the Reps' Service
+*/
+resource "pagerduty_escalation_policy" "repName_ep1" {
+  name      = "[repName] Engineering On-call"
+  num_loops = 2
+  teams     = [pagerduty_team.repName_team.id]
+
+  rule {
+    escalation_delay_in_minutes = 2
+    target {
+      type = "schedule_reference"
+      id   = pagerduty_schedule.repName_primary.id 
+    }
+  }
+  rule {
+    escalation_delay_in_minutes = 2
+    target {
+      type = "schedule_reference"
+      id   = pagerduty_schedule.repName_secondary.id 
+    }
+  }
+  rule {
+    escalation_delay_in_minutes = 2
+    target {
+      type = "user_reference"
+      id   = pagerduty_user.repName.id
+    }
+  }
+}
+
+/* 
+  Escalation Policy for the Reps' Other Services
+*/
+resource "pagerduty_escalation_policy" "repName_ep_support" {
+  name      = "[repName] API Support On-call"
+  num_loops = 2
+  teams     = [pagerduty_team.repName_team.id]
+
+  rule {
+    escalation_delay_in_minutes = 15
+    target {
+      type = "schedule_reference"
+      id   = pagerduty_schedule.repName_secondary.id 
+    }
+  }
+  rule {
+    escalation_delay_in_minutes = 15
+    target {
+      type = "schedule_reference"
+      id   = pagerduty_schedule.repName_primary.id 
+    }
+  }
+}
+
+
+/* 
+  Business Services (e.g. higher-level business application)
+*/
+resource "pagerduty_business_service" "online_purchase_repName" {
+  name             = "Online Purchasing [repName]"
+  description      = "Transactions and Payments through website and apps"
+}
+
+/* 
+  Technical Services (e.g. lower-level microservices)
+*/
+resource "pagerduty_service" "repName_payment_api" {
+  name                    = "[repName] Payments API"
+  auto_resolve_timeout    = 14400
+  acknowledgement_timeout = "null"
+  escalation_policy       = pagerduty_escalation_policy.repName_ep1.id
+  alert_creation          = "create_alerts_and_incidents"
+  alert_grouping_parameters {
+    type    = "intelligent"
+  }
+  incident_urgency_rule {
+    type    = "constant"
+    urgency = "severity_based"
+  }
+  auto_pause_notifications_parameters {
+    enabled = true
+    timeout = 300
+  }
+}
+
+resource "pagerduty_service" "repName_cart_api" {
+  name                    = "[repName] Shopping Cart API"
+  auto_resolve_timeout    = 14400
+  acknowledgement_timeout = "null"
+  escalation_policy       = pagerduty_escalation_policy.repName_ep_support.id
+  alert_creation          = "create_alerts_and_incidents"
+  alert_grouping_parameters {
+    type    = "intelligent"
+  }
+  incident_urgency_rule {
+    type    = "constant"
+    urgency = "severity_based"
+  }
+  auto_pause_notifications_parameters {
+    enabled = true
+    timeout = 300
+  }
+}
+
+resource "pagerduty_service" "repName_api_platform" {
+  name                    = "[repName] API Platform"
+  auto_resolve_timeout    = 14400
+  acknowledgement_timeout = "null"
+  escalation_policy       = pagerduty_escalation_policy.repName_ep_support.id
+  alert_creation          = "create_alerts_and_incidents"
+  alert_grouping_parameters {
+    type    = "content_based"
+    config {
+      aggregate   = "all"
+      fields      = ["source"]
+    }
+  }
+  incident_urgency_rule {
+    type    = "constant"
+    urgency = "severity_based"
+  }
+  auto_pause_notifications_parameters {
+    enabled = true
+    timeout = 300
+  }
+}
+
+resource "pagerduty_service" "repName_login_api" {
+  name                    = "[repName] Login API"
+  auto_resolve_timeout    = 14400
+  acknowledgement_timeout = "null"
+  escalation_policy       = pagerduty_escalation_policy.repName_ep1.id
+  alert_creation          = "create_alerts_and_incidents"
+  alert_grouping_parameters {
+    type    = "intelligent"
+  }
+  incident_urgency_rule {
+    type    = "constant"
+    urgency = "severity_based"
+  }
+  auto_pause_notifications_parameters {
+    enabled = true
+    timeout = 300
+  }
+}
+
+
+/* 
+  Service-Level Integration Keys (Events v2)
+*/
+resource "pagerduty_service_integration" "repName_payment_api" {
+  name    = "Events API v2"
+  type    = "events_api_v2_inbound_integration"
+  service = pagerduty_service.repName_payment_api.id
+}
+
+resource "pagerduty_service_integration" "gitlab_payments" {
+  name    = data.pagerduty_vendor.gitlab.name
+  service = pagerduty_service.repName_payment_api.id
+  vendor  = data.pagerduty_vendor.gitlab.id
+}
+
+resource "pagerduty_service_integration" "repName_api_platform" {
+  name    = "Events API v2"
+  type    = "events_api_v2_inbound_integration"
+  service = pagerduty_service.repName_api_platform.id
+}
+
+resource "pagerduty_service_integration" "jenkins_platform" {
+  name    = data.pagerduty_vendor.jenkins.name
+  service = pagerduty_service.repName_api_platform.id
+  vendor  = data.pagerduty_vendor.jenkins.id
+}
+
+resource "pagerduty_service_integration" "repName_login_api" {
+  name    = "Events API v2"
+  type    = "events_api_v2_inbound_integration"
+  service = pagerduty_service.repName_login_api.id
+}
+
+resource "pagerduty_service_integration" "repName_cart_api" {
+  name    = "Events API v2"
+  type    = "events_api_v2_inbound_integration"
+  service = pagerduty_service.repName_cart_api.id
+}
+
+
+/* 
+  Tech Service -> Business Service Dependencies
+*/
+resource "pagerduty_service_dependency" "repName_payment_to_business" {
+    dependency {
+        dependent_service {
+            id = pagerduty_business_service.online_purchase_repName.id
+            type = "business_service"
+        }
+        supporting_service {
+            id = pagerduty_service.repName_payment_api.id
+            type = "service"
+        }
+    }
+}
+resource "pagerduty_service_dependency" "repName_login_to_business" {
+    dependency {
+        dependent_service {
+            id = pagerduty_business_service.online_purchase_repName.id
+            type = "business_service"
+        }
+        supporting_service {
+            id = pagerduty_service.repName_login_api.id
+            type = "service"
+        }
+    }
+}
+resource "pagerduty_service_dependency" "repName_cart_to_business" {
+    dependency {
+        dependent_service {
+            id = pagerduty_business_service.online_purchase_repName.id
+            type = "business_service"
+        }
+        supporting_service {
+            id = pagerduty_service.repName_cart_api.id
+            type = "service"
+        }
+    }
+}
+
+/* 
+  Tech Service -> Tech Service Dependencies
+*/
+resource "pagerduty_service_dependency" "repName_api_to_payment" {
+    dependency {
+        dependent_service {
+            id = pagerduty_service.repName_payment_api.id
+            type = "service"
+        }
+        supporting_service {
+            id = pagerduty_service.repName_api_platform.id
+            type = "service"
+        }
+    }
+}
+resource "pagerduty_service_dependency" "repName_api_to_login" {
+    dependency {
+        dependent_service {
+            id = pagerduty_service.repName_login_api.id
+            type = "service"
+        }
+        supporting_service {
+            id = pagerduty_service.repName_api_platform.id
+            type = "service"
+        }
+    }
+}
+resource "pagerduty_service_dependency" "repName_api_to_cart" {
+    dependency {
+        dependent_service {
+            id = pagerduty_service.repName_cart_api.id
+            type = "service"
+        }
+        supporting_service {
+            id = pagerduty_service.repName_api_platform.id
+            type = "service"
+        }
+    }
+}
+
+
+resource "pagerduty_schedule" "repName_primary" {
+  name      = "repName Engineering Primary"
+  time_zone = "Australia/Sydney"
+
+  layer {
+    name                         = "24-7 Roster"
+    start                        = "2022-11-06T20:00:00-05:00"
+    rotation_virtual_start       = "2022-11-06T20:00:00-05:00"
+    rotation_turn_length_seconds = 172800
+    users   = [
+        [for user in pagerduty_user.users: user.id if user.name == "Kate Miller"][0],
+        [for user in pagerduty_user.users: user.id if user.name == "Rob Smith"][0],
+        [for user in pagerduty_user.users: user.id if user.name == "Chelsea West"][0],
+        [for user in pagerduty_user.users: user.id if user.name == "Jamie Todd"][0]
+      ]
+  }
+
+  teams = [pagerduty_team.repName_team.id]
+}
+
+resource "pagerduty_schedule" "repName_secondary" {
+  name      = "repName Engineering Secondary"
+  time_zone = "Australia/Sydney"
+
+  layer {
+    name                         = "24-7 Roster"
+    start                        = "2022-11-06T20:00:00-05:00"
+    rotation_virtual_start       = "2022-11-06T20:00:00-05:00"
+    rotation_turn_length_seconds = 172800
+    users   = [
+        [for user in pagerduty_user.users: user.id if user.name == "Rob Smith"][0],
+        [for user in pagerduty_user.users: user.id if user.name == "Chelsea West"][0],
+        [for user in pagerduty_user.users: user.id if user.name == "Jamie Todd"][0],
+        [for user in pagerduty_user.users: user.id if user.name == "Kate Miller"][0]
+      ]
+  }
+
+  teams = [pagerduty_team.repName_team.id]
+}
+
+
+/* 
+  Event Orchestration
+*/
+resource "pagerduty_event_orchestration" "repName_orch" {
+  name = "repName Engineering Services"
+  description = "Consume Events and Process for repName Engineering"
+  team = pagerduty_team.repName_team.id
+}
+
+resource "pagerduty_event_orchestration_router" "repName_orch_router" {
+  event_orchestration = pagerduty_event_orchestration.repName_orch.id
+  set {
+    id = "start"
+    rule {
+      label = "Payment Alert"
+      condition {
+        expression = "event.source matches part 'payment-api'"
+      }
+      actions {
+        route_to = pagerduty_service.repName_payment_api.id
+      }
+    }
+    rule {
+      label = "Login Alert"
+      condition {
+        expression = "event.source matches part 'login-api'"
+      }
+      actions {
+        route_to = pagerduty_service.repName_login_api.id
+      }
+    }
+    rule {
+      label = "Shopping Cart Alert"
+      condition {
+        expression = "event.source matches part 'cart-api'"
+      }
+      actions {
+        route_to = pagerduty_service.repName_cart_api.id
+      }
+    }    
+    rule {
+      label = "API Platform Alert"
+      condition {
+        expression = "event.source matches part 'api-platform'"
+      }
+      actions {
+        route_to = pagerduty_service.repName_api_platform.id
+      }
+    }
+  }
+  catch_all {
+    actions {
+      route_to = "unrouted"
+    }
+  }
+}

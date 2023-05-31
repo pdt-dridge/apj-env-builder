@@ -15,6 +15,14 @@ data "pagerduty_vendor" "splunk" {
   name    = "Splunk"
 }
 
+data "pagerduty_vendor" "gitlab" {
+  name    = "GitLab"
+}
+
+data "pagerduty_vendor" "jenkins" {
+  name    = "Jenkins CI"
+}
+
 /* 
   Priorities - This needs to be enabled in the domain these files are run against.
   - https://support.pagerduty.com/docs/incident-priority
