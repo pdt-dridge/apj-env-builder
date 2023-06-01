@@ -131,11 +131,7 @@ resource "pagerduty_service" "repName_api_platform" {
   escalation_policy       = pagerduty_escalation_policy.repName_ep_support.id
   alert_creation          = "create_alerts_and_incidents"
   alert_grouping_parameters {
-    type    = "content_based"
-    config {
-      aggregate   = "all"
-      fields      = ["source"]
-    }
+    type    = "intelligent"
   }
   incident_urgency_rule {
     type    = "constant"
@@ -176,7 +172,7 @@ resource "pagerduty_service_integration" "repName_payment_api" {
   service = pagerduty_service.repName_payment_api.id
 }
 
-resource "pagerduty_service_integration" "gitlab_payments" {
+resource "pagerduty_service_integration" "repName_gitlab_payments" {
   name    = data.pagerduty_vendor.gitlab.name
   service = pagerduty_service.repName_payment_api.id
   vendor  = data.pagerduty_vendor.gitlab.id
@@ -188,7 +184,7 @@ resource "pagerduty_service_integration" "repName_api_platform" {
   service = pagerduty_service.repName_api_platform.id
 }
 
-resource "pagerduty_service_integration" "jenkins_platform" {
+resource "pagerduty_service_integration" "repName_jenkins_platform" {
   name    = data.pagerduty_vendor.jenkins.name
   service = pagerduty_service.repName_api_platform.id
   vendor  = data.pagerduty_vendor.jenkins.id
