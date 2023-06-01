@@ -46,7 +46,7 @@ resource "pagerduty_escalation_policy" "repName_ep1" {
     escalation_delay_in_minutes = 2
     target {
       type = "user_reference"
-      id   = pagerduty_user.repName.id
+      id   = data.pagerduty_user.repName.id
     }
   }
 }
